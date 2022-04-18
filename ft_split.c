@@ -3,10 +3,7 @@
 
 static int	is_charset(char str, char c)
 {
-	int	i;
-
-	i = 0;
-	if (str = c)
+	if (str == c)
 		return (1);
 	return (0);
 }
@@ -31,19 +28,19 @@ static int	word_count(const char *str, char c)
 	return (j);
 }
 
-static char	*dup(char const *s, char c)
+static char	*ft_dup(char const *s, char c)
 {
 	char	*str;
 	int		i;
 
 	i = 0;
-	while (str[i] && is_charset(str[i], c) == 0)
+	while (s[i] && is_charset(s[i], c) == 0)
 		i++;
 	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (str[i] && is_charset(str[i], c) == 0)
+	while (s[i] && is_charset(s[i], c) == 0)
 	{
 		str[i] = s[i];
 		i++;
@@ -67,7 +64,7 @@ char	**ft_split(char const *s, char c)
 		i++;
 	while (s[i])
 	{
-		dup(&s[j], c);
+		ft_dup(&s[j], c);
 		while (s[i] && is_charset(s[i], c) == 0)
 			i++;
 		while (s[i] && is_charset(s[i], c) == 1)

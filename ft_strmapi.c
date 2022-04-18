@@ -9,7 +9,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s)
 		return (0);
 	i = 0;
-	len = ft_strlen(s);
+	len = ft_strlen((char *)s);
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);

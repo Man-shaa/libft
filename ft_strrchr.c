@@ -11,8 +11,8 @@ int ft_strrchr(const char *str, int c)
     while (i >= 0)
     {
         if (str[i] == c)
-            return ((char *)&str[i]);
+            return ((int)str[i]);
         i--;
     }
-    return (NULL);
+    return (0);
 }

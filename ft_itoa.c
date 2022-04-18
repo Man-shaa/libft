@@ -3,9 +3,6 @@
 
 static void	fill(char *str, long nb, int j)
 {
-	int	i;
-
-	i = 0;
 	j--;
 	if (nb < 0)
 		nb = -nb;
