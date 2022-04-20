@@ -12,7 +12,7 @@ void	ft_putnbr_fd(int nb, int fd)
 		n = -n;
 		ft_putnbr_fd(n, fd);
 	}
-	else if (n < 9)
+	else if (n <= 9)
 		ft_putchar_fd((n + 48), fd);
 	else
 	{
