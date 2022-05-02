@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 11:08:32 by msharifi          #+#    #+#             */
+/*   Updated: 2022/05/02 11:08:32 by msharifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdlib.h>
 
 static int	charset_count(char const *s1, char const *set)
 {
@@ -47,15 +58,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	str[k] = '\0';
 	return (str);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	char	s1[] = "Hello guys how are you ?";
-	char	set[] = " eeeeeeeee ";
-	printf("%i\n", charset_count(s1, set));
-	printf("%s\n", ft_strtrim(s1, set));
-	return (0);
 }

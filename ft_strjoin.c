@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 11:07:42 by msharifi          #+#    #+#             */
+/*   Updated: 2022/05/02 11:07:42 by msharifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 
@@ -42,15 +54,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}	
 	str[i] = '\0';
 	return (str);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	char	s1[] = "Hello ";
-	char	s2[] = "comment ca va ?";
-	printf("%i\n", count_char(s1, s2));
-	printf("%s\n", ft_strjoin(s1, s2));
-	return (0);
 }

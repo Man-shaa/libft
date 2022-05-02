@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 11:06:37 by msharifi          #+#    #+#             */
+/*   Updated: 2022/05/02 11:06:37 by msharifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <unistd.h>
 
 void	ft_putnbr_fd(int nb, int fd)
 {
@@ -19,10 +30,4 @@ void	ft_putnbr_fd(int nb, int fd)
 		ft_putnbr_fd((n / 10), fd);
 		ft_putnbr_fd((n % 10), fd);
 	}
-}
-
-int	main(void)
-{
-	ft_putnbr_fd(123, 1);
-	return (0);
 }

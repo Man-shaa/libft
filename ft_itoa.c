@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 11:04:01 by msharifi          #+#    #+#             */
+/*   Updated: 2022/05/02 11:04:01 by msharifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdlib.h>
 
 static void	fill(char *str, long nb, int j)
 {
@@ -35,12 +46,4 @@ char	*ft_itoa(int n)
 	str[j] = '\0';
 	fill(str, nb, j);
 	return (str);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%s", ft_itoa(1345));
-	return (0);
 }

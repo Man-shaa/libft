@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 11:07:10 by msharifi          #+#    #+#             */
+/*   Updated: 2022/05/02 11:07:10 by msharifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <unistd.h>
 
 void	ft_putstr_fd(char *str, int fd)
 {
@@ -8,11 +19,4 @@ void	ft_putstr_fd(char *str, int fd)
 		write(fd, str, 1);
 		str++;
 	}
-}
-
-int	main(void)
-{
-	char	str[] = "";
-	ft_putstr_fd(str, 1);
-	return (0);
 }

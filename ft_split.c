@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 11:07:17 by msharifi          #+#    #+#             */
+/*   Updated: 2022/05/02 11:07:17 by msharifi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdlib.h>
 
 static int	is_charset(char str, char c)
 {
@@ -56,7 +67,7 @@ char	**ft_split(char const *s, char c)
 	int		j;
 
 	i = 0;
-	j = 0;	
+	j = 0;
 	dest = malloc(sizeof(char *) * (word_count(s, c) + 1));
 	if (dest == NULL)
 		return (NULL);
