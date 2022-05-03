@@ -12,11 +12,14 @@
 
 #include "libft.h"
 
-static void	fill(char *str, long nb, int j)
+static void	fill(char *str, long long nb, int j)
 {
 	j--;
 	if (nb < 0)
+	{
+		str[0] = '-';
 		nb = -nb;
+	}
 	while (j >= 0 && str[j] != '-')
 	{
 		str[j] = (nb % 10) + 48;
@@ -27,22 +30,22 @@ static void	fill(char *str, long nb, int j)
 
 char	*ft_itoa(int n)
 {
-	long	nb;
-	int		j;
-	char	*str;
+	long long	nb;
+	int			j;
+	char		*str;
 
-	nb = (long)n;
+	nb = (long long)n;
 	j = 0;
+	if (nb <= 0)
+		j++;
 	while (n != 0)
 	{
 		n /= 10;
 		j++;
 	}
-	if (nb < 0)
-		j++;
 	str = malloc(sizeof(char) * j + 1);
 	if (!str)
-		return (NULL);
+		return (0);
 	str[j] = '\0';
 	fill(str, nb, j);
 	return (str);
