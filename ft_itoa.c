@@ -46,6 +46,7 @@ char	*ft_itoa(int n)
 	str = malloc(sizeof(char) * j + 1);
 	if (!str)
 		return (NULL);
+	ft_bzero(str, j);
 	str[j] = '\0';
 	fill(str, nb, j);
 	return (str);

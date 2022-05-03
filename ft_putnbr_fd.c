@@ -14,20 +14,16 @@
 
 void	ft_putnbr_fd(int nb, int fd)
 {
-	long	n;
+	unsigned int	n;
 
-	n = (long)nb;
-	if (n < 0)
+	if (nb < 0)
 	{
-		write(fd, "-", 1);
-		n = -n;
-		ft_putnbr_fd(n, fd);
+		ft_putchar_fd('-', fd);
+		n = (unsigned int)(nb * -1);
 	}
-	else if (n <= 9)
-		ft_putchar_fd((n + 48), fd);
 	else
-	{
+		n = (unsigned int)nb;
+	if (n >= 10)
 		ft_putnbr_fd((n / 10), fd);
-		ft_putnbr_fd((n % 10), fd);
-	}
+	ft_putchar_fd((n % 10 + 48), fd);
 }
