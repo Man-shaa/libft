@@ -11,20 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 char	*ft_strrchr(const char *str, int c)
 {
 	int	i;
 
 	i = 0;
-	if ((!str && !c) || c == str[i])
+	if ((!str && !c))
 		return ((char *)&str[i]);
 	while (str[i])
 		i++;
 	i = i + 1;
 	while (i >= 0)
 	{
-		if (str[i] == c)
+		if (str[i] == (char)c)
 			return ((char *)&str[i]);
 		i--;
 	}
