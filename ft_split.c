@@ -86,15 +86,14 @@ static char	*put_words(char *str, char c, int n, char *mot)
 	return (mot);
 }
 
-
-char	**ft_split(const char *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**tab;
-	int	i;
+	int		i;
 
 	i = 0;
 	tab = malloc(sizeof(char *) * (count_words((char *) s, c) + 1));
-	while (i < count_words((char *) s,c))
+	while (i < count_words((char *) s, c))
 	{
 		tab[i] = malloc(sizeof(char) * (count_chars((char *) s, c, i) + 1));
 		tab[i] = put_words((char *) s, c, i, tab[i]);
