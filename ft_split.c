@@ -12,76 +12,94 @@
 
 #include "libft.h"
 
-static int	is_charset(char str, char c)
-{
-	if (str == c)
-		return (1);
-	return (0);
-}
-
-static int	word_count(const char *str, char c)
+static int	count_words(char *str, char c)
 {
 	int	i;
-	int	j;
+	int	count;
 
 	i = 0;
-	j = 0;
-	while (str[i] && is_charset(str[i], c) == 1)
-			i++;
+	count = 0;
 	while (str[i])
 	{
-		j++;
-		while (str[i] && is_charset(str[i], c) == 0)
+		while (str[i] && str[i] == c)
 			i++;
-		while (str[i] && is_charset(str[i], c) == 1)
+		while (str[i] && str[i] != c)
+		{
+			if (str[i + 1] == c || str[i + 1] == '\0')
+				count++;
 			i++;
+		}
 	}
-	return (j);
+	return (count);
 }
 
-static char	*ft_dup(char const *s, char c)
+static int	count_chars(char *str, char c, int n)
 {
-	char	*str;
-	int		i;
+	int	i;
+	int	chars;
+	int	count;
 
 	i = 0;
-	while (s[i] && is_charset(s[i], c) == 0)
-		i++;
-	str = malloc(sizeof(char) * (i + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (s[i] && is_charset(s[i], c) == 0)
+	count = 0;
+	chars = 0;
+	while (str[i])
 	{
-		str[i] = s[i];
-		i++;
+		while (str[i] && str[i] == c)
+			i++;
+		while (str[i] && str[i] != c)
+		{
+			if (count == n)
+				chars++;
+			if (str[i + 1] == c || str[i + 1] == '\0')
+				count++;
+			i++;
+		}
 	}
-	str[i] = '\0';
-	return (str);
+	return (chars);
 }
 
-char	**ft_split(char const *s, char c)
+static char	*put_words(char *str, char c, int n, char *mot)
 {
-	char	**dest;
-	int		i;
-	int		j;
+	int	i;
+	int	count;
+	int	chars;
 
 	i = 0;
-	j = 0;
-	dest = malloc(sizeof(char *) * (word_count(s, c) + 1));
-	if (dest == NULL)
-		return (NULL);
-	while (s[i] && is_charset(s[i], c) == 1)
-		i++;
-	while (s[i])
+	count = 0;
+	chars = 0;
+	while (str[i])
 	{
-		ft_dup(&s[j], c);
-		while (s[i] && is_charset(s[i], c) == 0)
+		while (str[i] && str[i] == c)
 			i++;
-		while (s[i] && is_charset(s[i], c) == 1)
+		while (str[i] && str[i] != c)
+		{
+			if (count == n)
+			{
+				mot[chars] = str[i];
+				chars++;
+			}
+			if (str[i + 1] == c || str[i + 1] == '\0')
+				count++;
 			i++;
-		j++;
+		}
 	}
-	dest[j] = '\0';
-	return (dest);
+	return (mot);
+}
+
+
+char	**ft_split(const char *s, char c)
+{
+	char	**tab;
+	int	i;
+
+	i = 0;
+	tab = malloc(sizeof(char *) * (count_words((char *) s, c) + 1));
+	while (i < count_words((char *) s,c))
+	{
+		tab[i] = malloc(sizeof(char) * (count_chars((char *) s, c, i) + 1));
+		tab[i] = put_words((char *) s, c, i, tab[i]);
+		i++;
+	}
+	tab[i] = '\0';
+	return (tab);
 }
