@@ -32,11 +32,9 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS) 
 	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
 
 bonus:		$(OBJS) $(OBJS_BONUS)
 	ar rc $(NAME) $(OBJS) $(OBJS_BONUS)
-	ranlib $(NAME)
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)

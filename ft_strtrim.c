@@ -12,50 +12,18 @@
 
 #include "libft.h"
 
-static int	charset_count(char const *s1, char const *set)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	k = 0;
-	while (s1[i])
-	{
-		j = 0;
-		while (set[j] && s1[i] != set[j])
-			j++;
-		if (set[j] == '\0')
-			k++;
-		i++;
-	}
-	return (k);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
-	int		i;
-	int		j;
-	int		k;
+	size_t	size;
 
-	i = 0;
-	k = 0;
-	str = malloc(sizeof(char) * charset_count(s1, set) + 1);
-	if (str == NULL)
+	if (!s1 || !set)
 		return (NULL);
-	while (s1[i])
-	{
-		j = 0;
-		while (set[j] && s1[i] != set[j])
-			j++;
-		if (set[j] == '\0')
-		{
-			str[k] = s1[i];
-			k++;
-		}
-		i++;
-	}
-	str[k] = '\0';
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	size = ft_strlen(s1);
+	while (size && ft_strchr(set, s1[size]))
+		size--;
+	str = ft_substr(s1, 0, size + 1);
 	return (str);
 }
